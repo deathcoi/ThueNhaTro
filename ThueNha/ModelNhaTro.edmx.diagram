@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66c2a5de994e41f39cb11d6c6f1524a1" Name="Diagram1">
+        <EntityTypeShape EntityType="InfoNhaTroModel.DiaDiem" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoNhaTroModel.KhachHang" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InfoNhaTroModel.NhaTro" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="InfoNhaTroModel.FK_NhaTro_DiaDiem" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

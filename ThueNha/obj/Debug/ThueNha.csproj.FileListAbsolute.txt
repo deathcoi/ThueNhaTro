@@ -1,3 +1,4 @@
+D:\Web\ThueNha\ThueNha\bin\Microsoft.AspNet.Identity.Owin.dll
 D:\Web\ThueNha\ThueNha\bin\ThueNha.dll.config
 D:\Web\ThueNha\ThueNha\bin\ThueNha.dll
 D:\Web\ThueNha\ThueNha\bin\ThueNha.pdb
@@ -32,7 +33,6 @@ D:\Web\ThueNha\ThueNha\bin\EntityFramework.dll
 D:\Web\ThueNha\ThueNha\bin\EntityFramework.SqlServer.dll
 D:\Web\ThueNha\ThueNha\bin\Microsoft.AspNet.Identity.Core.dll
 D:\Web\ThueNha\ThueNha\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\Web\ThueNha\ThueNha\bin\Microsoft.AspNet.Identity.Owin.dll
 D:\Web\ThueNha\ThueNha\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Web\ThueNha\ThueNha\bin\Microsoft.Owin.dll
 D:\Web\ThueNha\ThueNha\bin\Microsoft.Owin.Host.SystemWeb.dll

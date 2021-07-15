@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InfoNhaTroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DiaDiem">
+          <Key>
+            <PropertyRef Name="IDQuan" />
+          </Key>
+          <Property Name="IDQuan" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenQuan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="int" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="11" />
+          <Property Name="Hoten" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="NhaTro">
+          <Key>
+            <PropertyRef Name="IDNha" />
+          </Key>
+          <Property Name="IDNha" Type="int" Nullable="false" />
+          <Property Name="Tenduong" Type="nvarchar" MaxLength="500" />
+          <Property Name="DT" Type="nchar" MaxLength="11" />
+          <Property Name="TenChuNha" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="nchar" MaxLength="11" />
+          <Property Name="CTNha" Type="nvarchar" MaxLength="500" />
+          <Property Name="GioiThieu" Type="nvarchar" MaxLength="500" />
+          <Property Name="Gia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hinh" Type="image" />
+          <Property Name="IDQuan" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_NhaTro_DiaDiem">
+          <End Role="DiaDiem" Type="Self.DiaDiem" Multiplicity="0..1" />
+          <End Role="NhaTro" Type="Self.NhaTro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiaDiem">
+              <PropertyRef Name="IDQuan" />
+            </Principal>
+            <Dependent Role="NhaTro">
+              <PropertyRef Name="IDQuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InfoNhaTroModelStoreContainer">
+          <EntitySet Name="DiaDiem" EntityType="Self.DiaDiem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaTro" EntityType="Self.NhaTro" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NhaTro_DiaDiem" Association="Self.FK_NhaTro_DiaDiem">
+            <End Role="DiaDiem" EntitySet="DiaDiem" />
+            <End Role="NhaTro" EntitySet="NhaTro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InfoNhaTroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DiaDiem">
+          <Key>
+            <PropertyRef Name="IDQuan" />
+          </Key>
+          <Property Name="IDQuan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TenQuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhaTroes" Relationship="Self.FK_NhaTro_DiaDiem" FromRole="DiaDiem" ToRole="NhaTro" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="Int32" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NhaTro">
+          <Key>
+            <PropertyRef Name="IDNha" />
+          </Key>
+          <Property Name="IDNha" Type="Int32" Nullable="false" />
+          <Property Name="Tenduong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DT" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="TenChuNha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="CTNha" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GioiThieu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Gia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hinh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IDQuan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DiaDiem" Relationship="Self.FK_NhaTro_DiaDiem" FromRole="NhaTro" ToRole="DiaDiem" />
+        </EntityType>
+        <Association Name="FK_NhaTro_DiaDiem">
+          <End Role="DiaDiem" Type="Self.DiaDiem" Multiplicity="0..1" />
+          <End Role="NhaTro" Type="Self.NhaTro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiaDiem">
+              <PropertyRef Name="IDQuan" />
+            </Principal>
+            <Dependent Role="NhaTro">
+              <PropertyRef Name="IDQuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InfoNhaTro" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DiaDiems" EntityType="Self.DiaDiem" />
+          <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+          <EntitySet Name="NhaTroes" EntityType="Self.NhaTro" />
+          <AssociationSet Name="FK_NhaTro_DiaDiem" Association="Self.FK_NhaTro_DiaDiem">
+            <End Role="DiaDiem" EntitySet="DiaDiems" />
+            <End Role="NhaTro" EntitySet="NhaTroes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InfoNhaTroModelStoreContainer" CdmEntityContainer="InfoNhaTro">
+          <EntitySetMapping Name="DiaDiems">
+            <EntityTypeMapping TypeName="InfoNhaTroModel.DiaDiem">
+              <MappingFragment StoreEntitySet="DiaDiem">
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+                <ScalarProperty Name="TenQuan" ColumnName="TenQuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="InfoNhaTroModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaTroes">
+            <EntityTypeMapping TypeName="InfoNhaTroModel.NhaTro">
+              <MappingFragment StoreEntitySet="NhaTro">
+                <ScalarProperty Name="IDNha" ColumnName="IDNha" />
+                <ScalarProperty Name="Tenduong" ColumnName="Tenduong" />
+                <ScalarProperty Name="DT" ColumnName="DT" />
+                <ScalarProperty Name="TenChuNha" ColumnName="TenChuNha" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="CTNha" ColumnName="CTNha" />
+                <ScalarProperty Name="GioiThieu" ColumnName="GioiThieu" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
